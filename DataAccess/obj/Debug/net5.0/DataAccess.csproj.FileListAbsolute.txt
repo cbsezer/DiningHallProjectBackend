@@ -1,0 +1,5 @@
+C:\Users\betul\source\repos\YemekhaneProje\DataAccess\bin\Debug\net5.0\Entities.dll
+C:\Users\betul\source\repos\YemekhaneProje\DataAccess\obj\Debug\net5.0\DataAccess.csprojAssemblyReference.cache
+C:\Users\betul\source\repos\YemekhaneProje\DataAccess\obj\Debug\net5.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\betul\source\repos\YemekhaneProje\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\betul\source\repos\YemekhaneProje\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
