@@ -23,7 +23,7 @@ namespace ConsoleUI
 
             //userManager.Delete("18120205033");
             //userManager.Delete("18120205033");
-            //userManager.Update(new User { Balance = 21, Id = "18120205033" });
+            //userManager.Update(new User { Balance = 21, CardNumber = "18120205033" });
 
         }
     }

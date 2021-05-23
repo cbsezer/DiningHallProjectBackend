@@ -37,8 +37,8 @@ namespace DataAccess.Concrete.EntityFramework
                     entity.CardNumber = "3" + s;
                 }
 
-                var addedEntity = context.Database.ExecuteSqlRaw("insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})",
-                      entity.CardNumber, entity.FirstName, entity.LastName, entity.Email, entity.UserType, 0, entity.PhoneNumber,  DateTime.Now);
+                var addedEntity = context.Database.ExecuteSqlRaw("insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6})",
+                      entity.CardNumber, entity.FirstName, entity.LastName, entity.Email, entity.UserType, 0, entity.PhoneNumber);
 
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
@@ -47,7 +47,7 @@ namespace DataAccess.Concrete.EntityFramework
                 mail.To.Add(entity.Email);
                 mail.Subject = "Yemekhane Kart Başvurusu";
 
-                mail.Body = $"\nMerhaba {entity.FirstName} {entity.LastName}.\n\nİstanbul Medeniyet Üniversitesi yemekhane kart başvurun onaylandı. \n\nKart numaran: {entity.CardNumber} {https://upload.wikimedia.org/wikipedia/tr/2/2d/%C4%B0stanbul_Medeniyet_%C3%9Cniversitesi_2014_sonras%C4%B1_Logosu.jpg}";
+                mail.Body = $"\nMerhaba {entity.FirstName} {entity.LastName}.\n\nİstanbul Medeniyet Üniversitesi yemekhane kart başvurun onaylandı. \n\nKart numaran: {entity.CardNumber}";
 
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = new System.Net.NetworkCredential("imuyemekhane@gmail.com", "yemekhane123");
