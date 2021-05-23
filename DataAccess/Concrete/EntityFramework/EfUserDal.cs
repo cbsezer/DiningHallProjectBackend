@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,14 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public void Add(User entity)
         {
-            throw new NotImplementedException();
+            //IDisposable pattern
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                var addedEntity = context.Database.ExecuteSqlRaw("insert into Users (CardNumber , FirstName , LastName, Balance, PhoneNumber) values({0}, {1}, {2}, {3}, {4})",
+                     entity.CardNumber, entity.FirstName, entity.LastName, entity.Balance, entity.PhoneNumber);
+
+                context.SaveChanges();
+            }
         }
 
         public void Delete(User entity)
@@ -28,7 +36,10 @@ namespace DataAccess.Concrete.EntityFramework
 
         public List<User> GetAll(Expression<Func<User, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                return context.Users.FromSqlRaw("SELECT * FROM dbo.Users").ToList();
+            }
         }
 
         public void Update(User entity)

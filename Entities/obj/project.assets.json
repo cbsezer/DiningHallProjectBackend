@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\betul\\source\\repos\\YemekhaneProje\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\betul\\Documents\\GitHub\\DiningHallProjectBackend\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\betul\\source\\repos\\YemekhaneProje\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\betul\\Documents\\GitHub\\DiningHallProjectBackend\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\betul\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\betul\\source\\repos\\YemekhaneProje\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\betul\\Documents\\GitHub\\DiningHallProjectBackend\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\betul\\AppData\\Roaming\\NuGet\\NuGet.Config",
