@@ -21,12 +21,19 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
-        public Process Get(Expression<Func<Process, bool>> filter)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Process> GetAll(Expression<Func<Process, bool>> filter = null)
+
+        public Process Get(string sqlCommand)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public List<Process> GetAll(string sqlCommand = null)
         {
             throw new NotImplementedException();
         }

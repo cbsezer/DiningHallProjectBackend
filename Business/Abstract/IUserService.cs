@@ -11,8 +11,9 @@ namespace Business.Abstract
     {
         List<User> GetAll();
         List<User> GetAllByCategoryId(int id);
-        List<User> GetAllBByUnitPrice(decimal min, decimal max);
-
+        List<User> GetAllByBalance(decimal min, decimal max);
         void Add(User user);
+        void Delete(string id);
+        void Update(User user);
     }
 }

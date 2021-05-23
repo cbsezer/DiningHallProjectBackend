@@ -22,19 +22,29 @@ namespace Business.Concrete
             _userDal.Add(user);
         }
 
+        public void Delete(string id)
+        {
+            _userDal.Delete(id);
+        }
+
         public List<User> GetAll()
         {
             return _userDal.GetAll();
         }
 
-        public List<User> GetAllBByUnitPrice(decimal min, decimal max)
+        public List<User> GetAllByBalance(decimal min, decimal max)
         {
-            throw new NotImplementedException();
+            return _userDal.GetAll($"select * from Users where Balance between {min} and {max}");
         }
 
         public List<User> GetAllByCategoryId(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Update(User user)
+        {
+            _userDal.Update(user);
         }
     }
 }

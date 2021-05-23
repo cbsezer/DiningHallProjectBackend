@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IFoodDal : IEntityRepository<Food>
+    public interface IFoodDal : IEntityRepository<Food, int>
     {
     }
 }

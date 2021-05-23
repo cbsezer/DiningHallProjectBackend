@@ -12,11 +12,12 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8F85FB;Database=Yemekhane;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8F85FB;Database=DiningHall;Trusted_Connection=true");
         }
 
         public DbSet<User> Users { get; set; }
         //public DbSet<Food> Foods { get; set; }
         //public DbSet<Process> Processes { get; set; }
+        //public DbSet<UserType> UserTypes { get; set; }
     }
 }

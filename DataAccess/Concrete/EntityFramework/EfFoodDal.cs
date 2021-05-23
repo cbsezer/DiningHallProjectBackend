@@ -16,17 +16,17 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
-        public void Delete(Food entity)
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Food Get(Expression<Func<Food, bool>> filter)
+        public Food Get(string sqlCommand)
         {
             throw new NotImplementedException();
         }
 
-        public List<Food> GetAll(Expression<Func<Food, bool>> filter = null)
+        public List<Food> GetAll(string sqlCommand = null)
         {
             throw new NotImplementedException();
         }
