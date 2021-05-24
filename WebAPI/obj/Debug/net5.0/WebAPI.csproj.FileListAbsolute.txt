@@ -65,3 +65,7 @@ C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Entities.pdb
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Core.dll
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Core.pdb
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Autofac.dll
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Autofac.Extras.DynamicProxy.dll
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Autofac.Extensions.DependencyInjection.dll
