@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace Business.Abstract
         List<User> GetAll();
         List<User> GetAllByCategoryId(int id);
         List<User> GetAllByBalance(decimal min, decimal max);
-        void Add(User user);
-        void Delete(string id);
-        void Update(User user);
+        IResult Add(User user);
+        IResult Delete(string id);
+        IResult Update(User user);
     }
 }

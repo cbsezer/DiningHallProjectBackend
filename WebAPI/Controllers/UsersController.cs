@@ -23,10 +23,40 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public List<User> Get()
+        public IActionResult Get()
         {
-            var result = _userService.GetAll();
-            return result;
+            try
+            {
+                var result = _userService.GetAll();
+
+                return Ok(result);
+            }catch(Exception ex)
+            {
+                var exceptionMessage = ex.Message;
+                return BadRequest(exceptionMessage);
+
+            }
+
+
         }
+
+        //[HttpPost]
+        //public IActionResult Post(User user)
+        //{
+        //    try
+        //    {
+        //      //  var result = _userService.Add(user);
+
+        //      // return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var exceptionMessage = ex.Message;
+        //        return BadRequest(exceptionMessage);
+
+        //    }
+
+
+        //}
     }
 }

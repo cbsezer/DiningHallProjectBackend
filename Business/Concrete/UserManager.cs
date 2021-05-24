@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -17,15 +18,7 @@ namespace Business.Concrete
             this._userDal = userDal;
         }
 
-        public void Add(User user)
-        {
-            _userDal.Add(user);
-        }
 
-        public void Delete(string id)
-        {
-            _userDal.Delete(id);
-        }
 
         public List<User> GetAll()
         {
@@ -40,11 +33,27 @@ namespace Business.Concrete
         public List<User> GetAllByCategoryId(int id)
         {
             throw new NotImplementedException();
+        }       
+
+        IResult IUserService.Add(User user)
+        {
+          
+            _userDal.Add(user);
+            return new Result(true, "Kullanıcı eklendi");
         }
 
-        public void Update(User user)
+        IResult IUserService.Delete(string id)
+        {
+            _userDal.Delete(id);
+            return new Result(true, "Kullanıcı silindi");
+
+        }
+
+        IResult IUserService.Update(User user)
         {
             _userDal.Update(user);
+            return new Result(true, "Kullanıcı güncellendi");
+
         }
     }
 }

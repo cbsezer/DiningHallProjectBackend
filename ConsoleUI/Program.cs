@@ -21,7 +21,7 @@ namespace ConsoleUI
             //userManager.Add(new User { FirstName = "Serpil", LastName = "Üstebay", PhoneNumber = "0123456789", UserType = 2, Email = "s.ustebay@medeniyet.edu.tr" });
             //userManager.Add(new User { FirstName = "Emine Aleyna", LastName = "Elmas", PhoneNumber = "0123456789", UserType = 3, Email = "ealeynaelmas@medeniyet.edu.tr" });
 
-            //userManager.Delete("18120205033");
+            //userManager.Delete("15853353");
             //userManager.Delete("18120205033");
             //userManager.Update(new User { Balance = 21, CardNumber = "18120205033" });
 

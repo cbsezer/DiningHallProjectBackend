@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,27 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : IUserDal
     {
+
+
+        //List<UserDetailDTO> GetUserDetails()
+        //{
+        //    using (YemekhaneContext context = new YemekhaneContext())
+        //    {
+        //        //    //joinli sorgular burada atılacak
+
+        //        var result = from p in context.Products
+        //                     join c in context.Categories
+        //                     on p.CategoryId equals c.CategoryId
+        //                     select new ProductDetailDto
+        //                     {
+        //                         ProductId = p.ProductId,
+        //                         ProductName = p.ProductName,
+        //                         CategoryName = c.CategoryName,
+        //                         UnitsInStock = p.UnitsInStock
+        //                     };
+        //        return result.ToList();
+        //    }
+        //}
         public void Add(User entity)
         {
             //IDisposable pattern
