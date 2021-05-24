@@ -14,8 +14,17 @@ namespace Business.Constants
         public static string UserUpdated = "Kullanıcı güncellendi";
         public static string MaintenanceTime = "Sistem bakımda";
         public static string UsersListed = "Kullanıcılar listelendi";
-        public static string FoodsListed = "Yemekler listelendi";
-        public static string FoodLimitExceded = "Yemek limiti aşıldığı için yeni ürün eklenemiyor";
+        public static string StaffAdded = "Çalışan eklendi";
+        public static string StaffDeleted = "Çalışan silindi";
+        public static string StaffListed = "Çalışanlar listelendi";
+        public static string MenusListed = "Yemekler listelendi";
+        public static string MenuAdded = "Yemek eklendi";
+        public static string MenuDeleted = "Yemek silindi";
+        public static string MenuLimitExceded = "Yemek limiti aşıldığı için yeni ürün eklenemiyor";
         public static string AuthorizationDenied = "Yetkiniz yok.";
+        public static string ProcessDeleted = "İşlem silindi";
+        public static string ProcessListed = "İşlemler listelendi";
+
+
     }
 }

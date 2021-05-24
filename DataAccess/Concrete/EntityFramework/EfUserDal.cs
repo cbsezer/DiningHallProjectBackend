@@ -58,7 +58,7 @@ namespace DataAccess.Concrete.EntityFramework
                 {
                     entity.CardNumber = "3" + s;
                 }
-
+                //aynı isim mail ve telefon numarası eşleşirse sistemde kullanıcıyı kaydetme
                 var addedEntity = context.Database.ExecuteSqlRaw("insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6})",
                       entity.CardNumber, entity.FirstName, entity.LastName, entity.Email, entity.UserType, 0, entity.PhoneNumber);
 

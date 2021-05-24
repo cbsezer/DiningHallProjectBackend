@@ -19,15 +19,13 @@ namespace Business.Concrete
             this._userDal = userDal;
         }
 
-
-
         public IDataResult<List<User>> GetAll()
         {
             if (DateTime.Now.Hour == 22)
             {
                 return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserAdded);
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UsersListed);
         }
 
         public IDataResult<List<User>> GetAllByBalance(decimal min, decimal max)

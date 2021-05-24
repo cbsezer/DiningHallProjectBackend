@@ -8,5 +8,9 @@ namespace Entities.Concrete
 {
     public class Process : IEntity
     {
+        public string ProcessId { get; set; }
+        public string CardNumber { get; set; }
+        public DateTime ProcessTime { get; set; }
+        public decimal ProcessAmount { get; set; }
     }
 }

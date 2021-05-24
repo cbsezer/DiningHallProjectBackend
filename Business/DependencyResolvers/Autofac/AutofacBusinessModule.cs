@@ -18,11 +18,14 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
-            builder.RegisterType<FoodManager>().As<IFoodService>().SingleInstance();
-            builder.RegisterType<EfFoodDal>().As<IFoodDal>().SingleInstance();
+            builder.RegisterType<MenuManager>().As<IMenuService>().SingleInstance();
+            builder.RegisterType<EfMenuDal>().As<IMenuDal>().SingleInstance();
 
             builder.RegisterType<ProcessManager>().As<IProcessService>().SingleInstance();
             builder.RegisterType<EfProcessDal>().As<IProcessDal>().SingleInstance();
+
+            builder.RegisterType<StaffManager>().As<IStaffService>().SingleInstance();
+            builder.RegisterType<EfStaffDal>().As<IStaffDal>().SingleInstance();
         }
     }
 }

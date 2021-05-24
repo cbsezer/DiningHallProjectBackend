@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IProcessService
+    public interface IStaffService
     {
-        IDataResult<List<Process>> GetAll();
+        IDataResult<List<Staff>> GetAll();
+        IResult Add(Staff staff);
         IResult Delete(int id);
     }
 }

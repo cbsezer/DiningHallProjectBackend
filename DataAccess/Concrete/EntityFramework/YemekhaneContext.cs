@@ -16,8 +16,9 @@ namespace DataAccess.Concrete.EntityFramework
         }
 
         public DbSet<User> Users { get; set; }
-        //public DbSet<Food> Foods { get; set; }
-        //public DbSet<Process> Processes { get; set; }
-        //public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Process> Process { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+       // public DbSet<UserType> UserType { get; set; }
     }
 }

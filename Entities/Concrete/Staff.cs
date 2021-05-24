@@ -9,6 +9,7 @@ namespace Entities.Concrete
 {
     public class Staff : IEntity
     {
+        public int StaffId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime ShiftDate { get; set; }

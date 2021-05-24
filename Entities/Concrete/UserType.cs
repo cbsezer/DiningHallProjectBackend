@@ -9,7 +9,7 @@ namespace Entities.Concrete
 {
     public class UserType : IEntity
     {
-        public int TypeId { get; set; }
-        public string TypeName { get; set; }
+        public int TypeNumber { get; set; }
+        public string TypeDescription { get; set; }
     }
 }

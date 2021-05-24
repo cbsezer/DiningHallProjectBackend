@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -18,34 +20,16 @@ namespace Business.Concrete
             _processDal = processDal;
         }
 
-        public void Add(Process process)
+        public IResult Delete(int id)
         {
-            throw new NotImplementedException();
+            _processDal.Delete(id);
+            return new SuccessResult(Messages.ProcessDeleted);
         }
 
-        public void Delete(string id)
+        public IDataResult<List<Process>> GetAll()
         {
-            throw new NotImplementedException();
-        }
+            return new SuccessDataResult<List<Process>>(_processDal.GetAll(), Messages.ProcessListed);
 
-        public List<Process> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Process> GetAllByBalance(decimal min, decimal max)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Process> GetAllByCategoryId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Process process)
-        {
-            throw new NotImplementedException();
         }
     }
 }
