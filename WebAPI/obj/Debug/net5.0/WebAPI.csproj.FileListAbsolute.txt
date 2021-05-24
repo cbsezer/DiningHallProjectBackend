@@ -63,3 +63,5 @@ C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Business.pdb
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\DataAccess.pdb
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Entities.pdb
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Core.dll
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Core.pdb

@@ -22,41 +22,75 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [HttpPost("AddUser")]
+        public IActionResult AddUser(User user)
+        {
+
+            var result = _userService.Add(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPut("UpdateUser")]
+        public IActionResult UpdateUser(User user)
+        {
+
+            var result = _userService.Update(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpDelete("DeleteUser")]
+        public IActionResult DeleteUser(string cardNumber)
+        {
+
+            var result = _userService.Delete(cardNumber);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpGet("GetAllUsers")]
         public IActionResult Get()
         {
-            try
-            {
-                var result = _userService.GetAll();
+            var result = _userService.GetAll();
 
-                return Ok(result);
-            }catch(Exception ex)
+            if (result.Success)
             {
-                var exceptionMessage = ex.Message;
-                return BadRequest(exceptionMessage);
+                return Ok(result);
 
             }
 
+            return BadRequest(result);
 
         }
 
-        //[HttpPost]
-        //public IActionResult Post(User user)
-        //{
-        //    try
-        //    {
-        //      //  var result = _userService.Add(user);
+        [HttpGet("GetAllUsersByBalance")]
+        public IActionResult GetAllByBalance(decimal min, decimal max)
+        {
+            var result = _userService.GetAllByBalance(min, max);
 
-        //      // return Ok(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var exceptionMessage = ex.Message;
-        //        return BadRequest(exceptionMessage);
+            if (result.Success)
+            {
+                return Ok(result);
 
-        //    }
+            }
+            
+            return BadRequest(result);
+            
+        }
 
-
-        //}
+        
     }
 }

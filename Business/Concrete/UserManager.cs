@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,39 +21,55 @@ namespace Business.Concrete
 
 
 
-        public List<User> GetAll()
+        public IDataResult<List<User>> GetAll()
         {
-            return _userDal.GetAll();
+            if (DateTime.Now.Hour == 23)
+            {
+                return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UserAdded);
         }
 
-        public List<User> GetAllByBalance(decimal min, decimal max)
+        public IDataResult<List<User>> GetAllByBalance(decimal min, decimal max)
         {
-            return _userDal.GetAll($"select * from Users where Balance between {min} and {max}");
+            if (DateTime.Now.Hour == 1)
+            {
+                return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<User>>(_userDal.GetAll($"select * from Users where Balance between {min} and {max}"), Messages.UsersListed);
         }
 
-        public List<User> GetAllByCategoryId(int id)
+        public IDataResult<List<User>> GetAllByCategoryId(int id)
         {
             throw new NotImplementedException();
-        }       
-
-        IResult IUserService.Add(User user)
-        {
-          
-            _userDal.Add(user);
-            return new Result(true, "Kullanıcı eklendi");
         }
 
-        IResult IUserService.Delete(string id)
+        public IDataResult<User> GetById(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Add(User user)
+        {
+          if(user.FirstName.Length < 2)
+            {
+                return new ErrorResult(Messages.UserNameInvalid);
+            }
+            _userDal.Add(user);
+            return new SuccessResult(Messages.UserAdded);
+        }
+
+        public IResult Delete(string id)
         {
             _userDal.Delete(id);
-            return new Result(true, "Kullanıcı silindi");
+            return new SuccessResult(Messages.UserDeleted);
 
         }
 
-        IResult IUserService.Update(User user)
+        public IResult Update(User user)
         {
             _userDal.Update(user);
-            return new Result(true, "Kullanıcı güncellendi");
+            return new SuccessResult(Messages.UserUpdated);
 
         }
     }

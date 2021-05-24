@@ -10,9 +10,10 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        List<User> GetAll();
-        List<User> GetAllByCategoryId(int id);
-        List<User> GetAllByBalance(decimal min, decimal max);
+        IDataResult<List<User>> GetAll();
+        IDataResult<List<User>> GetAllByCategoryId(int id);
+        IDataResult<List<User>> GetAllByBalance(decimal min, decimal max);
+        IDataResult<User> GetById(int userId);
         IResult Add(User user);
         IResult Delete(string id);
         IResult Update(User user);
