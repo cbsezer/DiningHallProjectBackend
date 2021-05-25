@@ -35,11 +35,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPut("UpdateUser")]
-        public IActionResult UpdateUser(User user)
+        [HttpPut("AddBalance")]
+        public IActionResult UpdateBalance(decimal balance, int cardNumber)
         {
 
-            var result = _userService.Update(user);
+            var result = _userService.UpdateBalance(balance, cardNumber);
             if (result.Success)
             {
                 return Ok(result);
@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("DeleteUser")]
-        public IActionResult DeleteUser(string cardNumber)
+        public IActionResult DeleteUser(int cardNumber)
         {
 
             var result = _userService.Delete(cardNumber);

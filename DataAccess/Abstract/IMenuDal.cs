@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IMenuDal : IEntityRepository<Menu, int>
+    public interface IMenuDal : IEntityRepository<Menu>
     {
     }
 }

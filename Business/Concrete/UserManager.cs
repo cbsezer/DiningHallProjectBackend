@@ -21,7 +21,7 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 20)
             {
                 return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
             }
@@ -57,18 +57,18 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserAdded);
         }
 
-        public IResult Delete(string id)
+        public IResult Delete(int id)
         {
             _userDal.Delete(id);
             return new SuccessResult(Messages.UserDeleted);
 
         }
 
-        public IResult Update(User user)
-        {
-            _userDal.Update(user);
-            return new SuccessResult(Messages.UserUpdated);
 
+        public IResult UpdateBalance(decimal balance, int cardNumber)
+        {
+            _userDal.UpdateBalance(balance, cardNumber);
+            return new SuccessResult(Messages.UserUpdated);
         }
     }
 }

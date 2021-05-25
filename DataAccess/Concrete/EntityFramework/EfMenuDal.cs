@@ -46,10 +46,5 @@ namespace DataAccess.Concrete.EntityFramework
                 return sqlCommand == null ? context.Menus.FromSqlRaw("SELECT * FROM dbo.Menus").ToList() : context.Menus.FromSqlRaw(sqlCommand).ToList();
             }
         }
-
-        public void Update(Menu entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IEntityRepository<T,Y> where T : class, IEntity, new()
+    public interface IEntityRepository<T> where T : class, IEntity, new()
     {
         List<T> GetAll(string sqlCommand = null);
         T Get(string sqlCommand);
         void Add(T entity);
-        void Update(T entity);
-        void Delete(Y id);
+        void Delete(int id);
     }
 }

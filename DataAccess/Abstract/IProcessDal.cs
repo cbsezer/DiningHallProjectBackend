@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IProcessDal : IEntityRepository<Process, int>
+    public interface IProcessDal : IEntityRepository<Process>
     {
     }
 }

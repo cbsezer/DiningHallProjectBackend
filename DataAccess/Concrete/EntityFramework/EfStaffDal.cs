@@ -50,5 +50,6 @@ namespace DataAccess.Concrete.EntityFramework
         {
             throw new NotImplementedException();
         }
+
     }
 }

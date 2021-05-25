@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserDal : IEntityRepository<User, string>
+    public interface IUserDal : IEntityRepository<User>
     {
+        public void UpdateBalance(decimal balance, int cardNumber);
+
     }
 }

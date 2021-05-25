@@ -42,9 +42,5 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void Update(Process entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -15,7 +15,7 @@ namespace Business.Abstract
         IDataResult<List<User>> GetAllByBalance(decimal min, decimal max);
         IDataResult<User> GetById(int userId);
         IResult Add(User user);
-        IResult Delete(string id);
-        IResult Update(User user);
+        IResult Delete(int id);
+        IResult UpdateBalance(decimal balance, int cardNumber);
     }
 }
