@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,20 +22,13 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
-            if (DateTime.Now.Hour == 20)
-            {
-                return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
-            }
+            
             return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UsersListed);
         }
 
         public IDataResult<List<User>> GetAllByBalance(decimal min, decimal max)
         {
-            if (DateTime.Now.Hour == 1)
-            {
-                return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
-            }
-            return new SuccessDataResult<List<User>>(_userDal.GetAll($"select * from Users where Balance between {min} and {max}"), Messages.UsersListed);
+              return new SuccessDataResult<List<User>>(_userDal.GetAll($"select * from Users where Balance between {min} and {max}"), Messages.UsersListed);
         }
 
         public IDataResult<List<User>> GetAllByCategoryId(int id)
@@ -44,7 +38,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetById(int userId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<User>(_userDal.Get($"Select * from Users Where CardNumber={userId}"));
         }
 
         public IResult Add(User user)
@@ -70,5 +64,12 @@ namespace Business.Concrete
             _userDal.UpdateBalance(balance, cardNumber);
             return new SuccessResult(Messages.UserUpdated);
         }
+
+        public IDataResult<User> Login(int cardNo, string password)
+        {
+            return new SuccessDataResult<User>(_userDal.Get($"Select * from Users Where CardNumber={cardNo} and PasswordSalt={password}"));
+        }
+
+
     }
 }

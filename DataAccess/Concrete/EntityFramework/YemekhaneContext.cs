@@ -12,7 +12,8 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8F85FB;Database=DiningHall;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=40.68.146.117;Database=DiningHall;Persist Security Info=False;User ID=sa;
+                                        Password=Yemek.123;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=True;Connection Timeout=30;");
         }
 
         public DbSet<User> Users { get; set; }

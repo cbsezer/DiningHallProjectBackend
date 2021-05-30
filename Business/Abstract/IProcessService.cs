@@ -10,7 +10,10 @@ namespace Business.Abstract
 {
     public interface IProcessService
     {
+        IResult EatFood(int cardNumber);
         IDataResult<List<Process>> GetAll();
         IResult Delete(int id);
+        IDataResult<Process> GetUserMonthlySpending(int userId, string month);
+
     }
 }

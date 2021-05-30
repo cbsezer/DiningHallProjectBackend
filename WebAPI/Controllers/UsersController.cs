@@ -2,6 +2,7 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,19 @@ namespace WebAPI.Controllers
         public UsersController(IUserService userService)
         {
             _userService = userService;
+        }
+
+        [HttpPost("Login")]
+        public IActionResult LoginLogin(int cardNo, string password)
+        {
+
+            var result = _userService.Login(cardNo, password);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
 
         [HttpPost("AddUser")]
@@ -76,6 +90,21 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet("GetById")]
+        public IActionResult GetById(int cardNumber)
+        {
+            var result = _userService.GetById(cardNumber);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
         [HttpGet("GetAllUsersByBalance")]
         public IActionResult GetAllByBalance(decimal min, decimal max)
         {
@@ -91,6 +120,8 @@ namespace WebAPI.Controllers
             
         }
 
-        
+       
+
+
     }
 }

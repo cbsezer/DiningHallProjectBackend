@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.DTOs;
+
 
 namespace Business.Abstract
 {
@@ -15,6 +17,7 @@ namespace Business.Abstract
         IDataResult<List<User>> GetAllByBalance(decimal min, decimal max);
         IDataResult<User> GetById(int userId);
         IResult Add(User user);
+        IDataResult<User> Login(int cardNo, string password);
         IResult Delete(int id);
         IResult UpdateBalance(decimal balance, int cardNumber);
     }

@@ -20,6 +20,19 @@ namespace WebAPI.Controllers
             _processService = processService;
         }
 
+        [HttpPost("EatFood")]
+        public IActionResult AddProcess(int id)
+        {
+
+            var result = _processService.EatFood(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
 
         [HttpDelete("DeleteProcess")]
         public IActionResult DeleteProcess(int id)
@@ -38,6 +51,21 @@ namespace WebAPI.Controllers
         public IActionResult Get()
         {
             var result = _processService.GetAll();
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
+        [HttpGet("GetUserMonthlySpending")]
+        public IActionResult GetUserMonthlySpending(int userId, string month)
+        {
+            var result = _processService.GetUserMonthlySpending(userId, month);
 
             if (result.Success)
             {

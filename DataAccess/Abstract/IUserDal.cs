@@ -9,7 +9,7 @@ namespace DataAccess.Abstract
 {
     public interface IUserDal : IEntityRepository<User>
     {
-        public void UpdateBalance(decimal balance, int cardNumber);
+        public void UpdateBalance(decimal balance, int cardNumber);       
 
     }
 }

@@ -9,5 +9,7 @@ namespace DataAccess.Abstract
 {
     public interface IProcessDal : IEntityRepository<Process>
     {
+        void EatFood(int cardNumber);
+
     }
 }

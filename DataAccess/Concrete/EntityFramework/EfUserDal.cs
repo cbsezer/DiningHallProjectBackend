@@ -42,8 +42,8 @@ namespace DataAccess.Concrete.EntityFramework
             {
 
                  //aynı isim mail ve telefon numarası eşleşirse sistemde kullanıcıyı kaydetme
-                context.Database.ExecuteSqlRaw("IF( exists (select * from  Users where Email != {2} and PhoneNumber != {5})) BEGIN insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6}) END",
-                       entity.FirstName, entity.LastName, entity.Email, entity.UserType, 0, entity.PhoneNumber, DateTime.Now);
+                context.Database.ExecuteSqlRaw("IF( exists (select * from  Users where Email != {2} and PhoneNumber != {6})) BEGIN insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}) END",
+                       entity.FirstName, entity.LastName, entity.Email, entity.PasswordSalt, entity.UserType, 0, entity.PhoneNumber, DateTime.Now);
 
                 var sendMail = context.Users.FromSqlRaw("User_INSERT_Notification");
                 context.SaveChanges();
@@ -53,7 +53,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-               context.Database.ExecuteSqlRaw("delete from Users where CardNumber={0}", cardNumber);
+               context.Database.ExecuteSqlRaw("DELETE from Process WHERE CardNumber={0} DELETE from Users WHERE CardNumber={0} ", cardNumber);
 
                 context.SaveChanges();
             }
@@ -62,7 +62,11 @@ namespace DataAccess.Concrete.EntityFramework
 
         public User Get(string sqlCommand)
         {
-            throw new NotImplementedException();
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                return context.Users.FromSqlRaw(sqlCommand).FirstOrDefault();
+
+            }
         }
 
         public List<User> GetAll(string sqlCommand = null)
@@ -85,5 +89,5 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-    }
+           }
 }

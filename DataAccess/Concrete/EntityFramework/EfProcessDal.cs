@@ -12,6 +12,16 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProcessDal : IProcessDal
     {
+        public void EatFood(int cardNumber)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                context.Database.ExecuteSqlRaw("EXEC AddFood {0}", cardNumber);
+
+                context.SaveChanges();
+            }
+        }
+
         public void Add(Process entity)
         {
             throw new NotImplementedException();
@@ -30,10 +40,14 @@ namespace DataAccess.Concrete.EntityFramework
 
         public Process Get(string sqlCommand)
         {
-            throw new NotImplementedException();
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                return context.Process.FromSqlRaw(sqlCommand).FirstOrDefault();
+
+            }
         }
 
-
+    
         public List<Process> GetAll(string sqlCommand = null)
         {
             using (YemekhaneContext context = new YemekhaneContext())

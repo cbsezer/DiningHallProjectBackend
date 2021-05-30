@@ -22,6 +22,7 @@ namespace Business.Constants
         public static string MenuDeleted = "Yemek silindi";
         public static string MenuLimitExceded = "Yemek limiti aşıldığı için yeni ürün eklenemiyor";
         public static string AuthorizationDenied = "Yetkiniz yok.";
+        public static string ProcessAdded = "İşlem eklendi";
         public static string ProcessDeleted = "İşlem silindi";
         public static string ProcessListed = "İşlemler listelendi";
 
