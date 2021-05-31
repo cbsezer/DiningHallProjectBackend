@@ -13,7 +13,10 @@ namespace Business.Abstract
         IResult EatFood(int cardNumber);
         IDataResult<List<Process>> GetAll();
         IResult Delete(int id);
-        IDataResult<Process> GetUserMonthlySpending(int userId, string month);
+        IDataResult<int> GetUserMonthlySpending(int userId, string month);
+        IDataResult<int> GetMonthlyGain(string month);
+        IDataResult<int> GetYearlyGain(string year);
+        
 
     }
 }

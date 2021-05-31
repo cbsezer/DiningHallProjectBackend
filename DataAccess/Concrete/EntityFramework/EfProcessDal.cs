@@ -1,8 +1,11 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.ApplicationBlocks.Data;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -47,7 +50,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-    
+
         public List<Process> GetAll(string sqlCommand = null)
         {
             using (YemekhaneContext context = new YemekhaneContext())
@@ -56,5 +59,34 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
+        public int GetUserMonthlySpending(int userId, string month)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT SUM(ProcessAmount) as spending FROM Process WHERE ProcessTime Like '2021-{month}%' AND CardNumber = {userId}").Tables[0];
+
+                return Convert.ToInt32(dt.Rows[0]["spending"]);
+            }
+        }
+
+        public int GetMonthlyGain(string month)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT coalesce(SUM(ProcessAmount),0) as gain  FROM Process WHERE ProcessTime Like '2021-{month}%'").Tables[0];
+              
+                return Convert.ToInt32(dt.Rows[0]["gain"]);
+            }
+        }
+
+        public int GetYearlyGain(string year)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT coalesce(SUM(ProcessAmount),0) as gain  FROM Process WHERE ProcessTime Like '{year}%'").Tables[0];
+
+                return Convert.ToInt32(dt.Rows[0]["gain"]);
+            }
+        }
     }
 }

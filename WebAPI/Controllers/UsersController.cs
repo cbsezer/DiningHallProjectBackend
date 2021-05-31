@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult LoginLogin(int cardNo, string password)
+        public IActionResult Login(int cardNo, string password)
         {
 
             var result = _userService.Login(cardNo, password);
@@ -120,8 +120,53 @@ namespace WebAPI.Controllers
             
         }
 
-       
+
+        [HttpGet("GetMonthlyRegistration")]
+        public IActionResult GetMonthlyGain(string month)
+        {
+            var result = _userService.MonthlyRegistration(month);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
 
 
+        [HttpGet("GetYearlyRegistration")]
+        public IActionResult GetYearlyRegistration(string year)
+        {
+            var result = _userService.YearlyRegistration(year);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
+        
+
+        [HttpGet("TopVisitor")]
+        public IActionResult TopVisitor(string month)
+        {
+            var result = _userService.TopVisitor(month);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
     }
 }

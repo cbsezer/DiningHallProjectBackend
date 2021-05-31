@@ -13,4 +13,11 @@ namespace Entities.Concrete
         public DateTime ProcessTime { get; set; }
         public decimal ProcessAmount { get; set; }
     }
+
+
+    public class Test1 : IEntity
+    {
+        public int kolon1 { get; set; }
+       
+    }
 }

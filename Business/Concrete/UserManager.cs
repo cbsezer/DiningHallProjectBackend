@@ -70,6 +70,19 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get($"Select * from Users Where CardNumber={cardNo} and PasswordSalt={password}"));
         }
 
+        public IDataResult<int> MonthlyRegistration(string month)
+        {
+            return new SuccessDataResult<int>(_userDal.MonthlyRegistration(month));
+        }
 
+        public IDataResult<int> YearlyRegistration(string year)
+        {
+            return new SuccessDataResult<int>(_userDal.YearlyRegistration(year));
+        }
+
+        public IDataResult<string> TopVisitor(string month)
+        {
+            return new SuccessDataResult<string>(_userDal.TopVisitor(month));
+        }
     }
 }

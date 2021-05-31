@@ -70,12 +70,37 @@ namespace WebAPI.Controllers
             if (result.Success)
             {
                 return Ok(result);
+            }
 
+            return BadRequest(result);
+
+        }
+        [HttpGet("GetMonthlyGain")]
+        public IActionResult GetMonthlyGain(string month)
+        {
+            var result = _processService.GetMonthlyGain(month);
+
+            if (result.Success)
+            {
+                return Ok(result);
             }
 
             return BadRequest(result);
 
         }
 
+        [HttpGet("GetYearlyGain")]
+        public IActionResult GetYearlyGain(string year)
+        {
+            var result = _processService.GetYearlyGain(year);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+
+        }
     }
 }

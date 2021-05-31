@@ -38,10 +38,21 @@ namespace Business.Concrete
 
         }
 
-        public IDataResult<Process> GetUserMonthlySpending(int userId, string month)
+        public IDataResult<int> GetMonthlyGain(string month)
+        {
+            return new SuccessDataResult<int>(_processDal.GetMonthlyGain(month));
+        }
+
+        public IDataResult<int> GetUserMonthlySpending(int userId, string month)
         {
 
-            return new SuccessDataResult<Process>(_processDal.Get($"SELECT SUM(ProcessAmount) AS Spending FROM Process WHERE ProcessTime Like '2021-{month}%' AND CardNumber = {userId}"));
+            return new SuccessDataResult<int>(_processDal.GetUserMonthlySpending(userId, month));
+
+        }
+
+        public IDataResult<int> GetYearlyGain(string year)
+        {
+            return new SuccessDataResult<int>(_processDal.GetYearlyGain(year));
         }
     }
 }

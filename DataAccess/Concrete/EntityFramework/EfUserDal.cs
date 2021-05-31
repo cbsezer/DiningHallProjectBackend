@@ -5,36 +5,18 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Linq.Expressions;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.ApplicationBlocks.Data;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : IUserDal
     {
 
-
-        //List<UserDetailDTO> GetUserDetails()
-        //{
-        //    using (YemekhaneContext context = new YemekhaneContext())
-        //    {
-        //        //    //joinli sorgular burada atılacak
-
-        //        var result = from p in context.Products
-        //                     join c in context.Categories
-        //                     on p.CategoryId equals c.CategoryId
-        //                     select new ProductDetailDto
-        //                     {
-        //                         ProductId = p.ProductId,
-        //                         ProductName = p.ProductName,
-        //                         CategoryName = c.CategoryName,
-        //                         UnitsInStock = p.UnitsInStock
-        //                     };
-        //        return result.ToList();
-        //    }
-        //}
         public void Add(User entity)
         {
             //IDisposable pattern
@@ -78,6 +60,26 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
+        public int MonthlyRegistration(string month)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '2021-{month}%'").Tables[0];
+
+                return Convert.ToInt32(dt.Rows[0]["Registration"]);
+            }
+        }
+
+        public string TopVisitor(string month)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topVisitor {month}").Tables[0];
+
+                return (dt.Rows[0]["Fullname"]).ToString();
+            }
+        }
+
         public void UpdateBalance(decimal balance, int cardNumber)
         {
             using (YemekhaneContext context = new YemekhaneContext())
@@ -89,5 +91,14 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-           }
+        public int YearlyRegistration(string year)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '{year}%'").Tables[0];
+
+                return Convert.ToInt32(dt.Rows[0]["Registration"]);
+            }
+        }
+    }
 }
