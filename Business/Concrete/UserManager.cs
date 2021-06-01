@@ -6,6 +6,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,7 +83,12 @@ namespace Business.Concrete
 
         public IDataResult<string> TopVisitor(string month)
         {
-            return new SuccessDataResult<string>(_userDal.TopVisitor(month));
+            return new SuccessDataResult<string>(_userDal.TopVisitor(month), "En çok giden kullanıcı");
+        }
+
+        public IDataResult<StatisticsDTO> TopSpender(string month)
+        {
+            return new SuccessDataResult<StatisticsDTO>(_userDal.TopSpender(month));
         }
     }
 }

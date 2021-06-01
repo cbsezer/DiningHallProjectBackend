@@ -36,7 +36,11 @@ namespace DataAccess.Concrete.EntityFramework
 
         public Menu Get(string sqlCommand)
         {
-            throw new NotImplementedException();
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                return context.Menus.FromSqlRaw(sqlCommand).FirstOrDefault();
+
+            }
         }
 
         public List<Menu> GetAll(string sqlCommand = null)
@@ -45,6 +49,11 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 return sqlCommand == null ? context.Menus.FromSqlRaw("SELECT * FROM dbo.Menus").ToList() : context.Menus.FromSqlRaw(sqlCommand).ToList();
             }
+        }
+
+        public Menu MenuDetail(string date)
+        {
+            throw new NotImplementedException();
         }
     }
 }

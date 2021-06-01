@@ -62,5 +62,21 @@ namespace WebAPI.Controllers
 
         }
 
+
+        [HttpGet("GetMenuDetail")]
+        public IActionResult GetMenuDetail(string date)
+        {
+            var result = _menuService.GetMenuDetail(date);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
     }
 }

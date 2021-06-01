@@ -13,5 +13,7 @@ namespace Business.Abstract
         IDataResult<List<Menu>> GetAll();
         IResult Add(Menu menu);
         IResult Delete(int id);
+        IDataResult<Menu> GetMenuDetail(string date);
+
     }
 }

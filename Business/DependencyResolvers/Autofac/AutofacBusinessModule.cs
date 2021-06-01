@@ -26,6 +26,10 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<StaffManager>().As<IStaffService>().SingleInstance();
             builder.RegisterType<EfStaffDal>().As<IStaffDal>().SingleInstance();
+
+
+            builder.RegisterType<UserTypeManager>().As<IUserTypeService>().SingleInstance();
+            builder.RegisterType<EfUserTypeDal>().As<IUserTypeDal>().SingleInstance();
         }
     }
 }

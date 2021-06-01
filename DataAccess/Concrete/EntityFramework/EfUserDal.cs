@@ -70,13 +70,26 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
+        public StatisticsDTO TopSpender(string month)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topSpender {month}").Tables[0];
+
+
+                return (StatisticsDTO)dt.Rows[0][0];
+            }
+        }
+
         public string TopVisitor(string month)
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topVisitor {month}").Tables[0];
 
-                return (dt.Rows[0]["Fullname"]).ToString();
+                var tt =  Convert.ToString(dt.Rows[0]["Fullname"]);
+
+                return tt;
             }
         }
 

@@ -9,5 +9,7 @@ namespace DataAccess.Abstract
 {
     public interface IMenuDal : IEntityRepository<Menu>
     {
+        Menu MenuDetail(string date);
+
     }
 }

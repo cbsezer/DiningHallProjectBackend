@@ -168,5 +168,22 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+
+        [HttpGet("TopSpender")]
+        public IActionResult TopSpender(string month)
+        {
+            var result = _userService.TopSpender(month);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
+        
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities.DTOs;
-
+using System.Data;
 
 namespace Business.Abstract
 {
@@ -19,6 +19,8 @@ namespace Business.Abstract
         IDataResult<int> MonthlyRegistration(string month);
         IDataResult<int> YearlyRegistration(string year);
         IDataResult<string> TopVisitor(string month);
+        IDataResult<StatisticsDTO> TopSpender(string month);
+
         IResult Add(User user);
         IDataResult<User> Login(int cardNo, string password);
         IResult Delete(int id);
