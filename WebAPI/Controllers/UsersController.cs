@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        [HttpPost("Login")]
+        [HttpGet("Login")]
         public IActionResult Login(int cardNo, string password)
         {
 
