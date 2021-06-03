@@ -45,5 +45,10 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<Staff>>(_staffDal.GetAll(), Messages.StaffListed);
         }
+
+        public IDataResult<Staff> StaffOfTheDay()
+        {
+            return new SuccessDataResult<Staff>(_staffDal.Get("SELECT * FROM Staff Where Staff.ShiftDate = CONVERT(date, GETDATE())"));
+        }
     }
 }

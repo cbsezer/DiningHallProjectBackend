@@ -35,7 +35,11 @@ namespace DataAccess.Concrete.EntityFramework
 
         public Staff Get(string sqlCommand)
         {
-            throw new NotImplementedException();
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                return context.Staff.FromSqlRaw(sqlCommand).FirstOrDefault();
+
+            }
         }
 
         public List<Staff> GetAll(string sqlCommand = null)

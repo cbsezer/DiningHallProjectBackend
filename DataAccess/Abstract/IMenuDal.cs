@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     {
         Menu MenuDetail(string date);
 
+
     }
 }

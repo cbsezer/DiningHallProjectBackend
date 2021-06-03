@@ -14,6 +14,8 @@ namespace Business.Abstract
         IResult Add(Menu menu);
         IResult Delete(int id);
         IDataResult<Menu> GetMenuDetail(string date);
+        IDataResult<Menu> MenuOfTheDay();
+
 
     }
 }

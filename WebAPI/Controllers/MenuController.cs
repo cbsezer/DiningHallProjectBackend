@@ -77,6 +77,21 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+        [HttpGet("MenuOfTheDay")]
+        public IActionResult MenuOfTheDay()
+        {
+            var result = _menuService.MenuOfTheDay();
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+        
 
     }
 }

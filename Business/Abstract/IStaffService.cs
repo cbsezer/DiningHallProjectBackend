@@ -13,5 +13,7 @@ namespace Business.Abstract
         IDataResult<List<Staff>> GetAll();
         IResult Add(Staff staff);
         IResult Delete(int id);
+        IDataResult<Staff> StaffOfTheDay();
+
     }
 }
