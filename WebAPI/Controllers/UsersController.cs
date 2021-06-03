@@ -47,6 +47,8 @@ namespace WebAPI.Controllers
             }
 
             return BadRequest(result);
+            Console.WriteLine(result.Message);
+            
         }
 
         [HttpPut("AddBalance")]

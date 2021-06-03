@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "_Layout";
+}
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <h2>İstanbul Medeniyet Üniversitesi Yemekhane Uygulaması</h2>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <div class="formStyle">
+                <input id="1" type="text" placeholder="Ad" />
+                <input id="2" type="text" placeholder="Soyad" />
+                <input id="3" type="text" placeholder="Telefon Numarası" />
+                <input id="4" type="text" placeholder="Email" />
+                <select id="5">
+                    <option style="color:gray" placeholder value="" disabled selected hidden>Durum Bilgisi</option>
+                    <option value="1">Öğrenci</option>
+                    <option value="2">Akademik Personel</option>
+                    <option value="3">İdari Personel</option>
+                </select>
+                <input id="6" type="password" placeholder="Parola" />
+                <button id="signUpButton" onclick="register(
+            document.getElementById('1').value,
+            document.getElementById('2').value,
+            document.getElementById('3').value,
+            document.getElementById('4').value,
+            document.getElementById('5').value,
+            document.getElementById('6').value
+          )">
+                    Kaydol
+                </button>
+            </div>
+        </div>
+        <div class="form-container sign-in-container">
+            <div class="formStyle">
+                <img src="css/İstanbul_Medeniyet_Üniversitesi_logo.png"
+                     class="logo" />
+                <input type="number" id="id_input" placeholder="Kart Numarası" />
+                <input type="password" id="pass_input" placeholder="Parola" />
+                <a href="#">Şifreni mi unuttun?</a>
+                <button id="btn" onclick="signIn(document.getElementById('id_input').value	,document.getElementById('pass_input').value)">Giriş</button>
+            </div>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Yemekhane Uygulamasına Hoşgeldin!</h1>
+                    <p>Bir kart numaran ve parolan varsa sisteme giriş yap.</p>
+                    <button class="ghost" id="signIn">Giriş</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Yemekhaneye Kaydol!</h1>
+                    <p>
+                        Yemekhanemizi kullanmak, aylık menu bilgilerini öğrenmek, kart
+                        işlemleri ve daha fazlası için kaydol.
+                    </p>
+                    <button class="ghost" id="signUp">Kaydol</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js">
+    </script>
+</body>
+
+</html>

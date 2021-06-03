@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
 
                  //aynı isim mail ve telefon numarası eşleşirse sistemde kullanıcıyı kaydetme
                 context.Database.ExecuteSqlRaw("IF( exists (select * from  Users where Email != {2} and PhoneNumber != {6})) BEGIN insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}) END",
-                       entity.FirstName, entity.LastName, entity.Email, entity.PasswordSalt, entity.UserType, 0, entity.PhoneNumber, DateTime.Now);
+                       entity.FirstName, entity.LastName, entity.Email, entity.PasswordSalt, entity.UserType, 0, entity.PhoneNumber, DateTime.Now.ToString());
 
                 var sendMail = context.Users.FromSqlRaw("User_INSERT_Notification");
                 context.SaveChanges();

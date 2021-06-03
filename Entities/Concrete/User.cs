@@ -19,6 +19,5 @@ namespace Entities.Concrete
         public int UserType { get; set; }
         public decimal Balance { get; set; }
         public string PhoneNumber { get; set; }
-        public DateTime RegistrationDate { get; set; }
     }
 }
