@@ -12,7 +12,7 @@ namespace Business.Abstract
         IDataResult<int> UserTypeMonthlySpending(string month, int userType);
         IDataResult<string> UserTypeInformation(int cardNumber);
 
-        IDataResult<List<string>> UserTypeList(string type);
+        IDataResult<List<dynamic>> UserTypeExpenses();
 
 
     }

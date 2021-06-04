@@ -16,8 +16,8 @@ namespace DataAccess.Concrete.EntityFramework
             using (YemekhaneContext context = new YemekhaneContext())
             {
 
-                var addedEntity = context.Database.ExecuteSqlRaw("insert into Staff values({0}, {1}, {2})",
-                      entity.FirstName, entity.LastName, entity.ShiftDate);
+                var addedEntity = context.Database.ExecuteSqlRaw("insert into Staff values({0}, {1})",
+                      entity.FirstName, entity.LastName);
 
                 context.SaveChanges();
             }
@@ -27,7 +27,8 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                context.Database.ExecuteSqlRaw("delete from Staff where StaffId={0}", id);
+           
+                context.Database.ExecuteSqlRaw("delete from Shifts where StaffId={0} delete from Staff where StaffId={0}", id);
 
                 context.SaveChanges();
             }

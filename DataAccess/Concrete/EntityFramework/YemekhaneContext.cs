@@ -21,5 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Process> Process { get; set; }
         public DbSet<Staff> Staff { get; set; }
         public DbSet<UserType> UserType { get; set; }
+        public DbSet<Shifts> Shifts { get; set; }
+
     }
 }

@@ -10,7 +10,7 @@ namespace DataAccess.Abstract
     {
         int UserTypeMonthlySpending(string month, int userType);
         string UserTypeInformation(int cardNumber);
-      //  List<string> userTypeList(string type);
+        List<dynamic> UserTypeExpenses();
 
     }
 }

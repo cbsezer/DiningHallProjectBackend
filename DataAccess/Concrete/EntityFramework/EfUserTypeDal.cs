@@ -12,6 +12,22 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserTypeDal : IUserTypeDal
     {
+        public List<dynamic> UserTypeExpenses()
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                List<dynamic> table = new List<dynamic>();
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC userTypeExpenses").Tables[0];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    var tt = dt.Rows[i];
+                    table.Add(tt);
+                    Console.WriteLine(table);
+                }
+                return table;
+            }
+        }
+
         public string UserTypeInformation(int cardNumber)
         {
             using (YemekhaneContext context = new YemekhaneContext())

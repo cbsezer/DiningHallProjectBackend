@@ -23,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
             using (YemekhaneContext context = new YemekhaneContext())
             {
 
-                 //aynı isim mail ve telefon numarası eşleşirse sistemde kullanıcıyı kaydetme
+                //aynı isim mail ve telefon numarası eşleşirse sistemde kullanıcıyı kaydetme
                 context.Database.ExecuteSqlRaw("IF( exists (select * from  Users where Email != {2} and PhoneNumber != {6})) BEGIN insert into Users values({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}) END",
                        entity.FirstName, entity.LastName, entity.Email, entity.PasswordSalt, entity.UserType, 0, entity.PhoneNumber, DateTime.Now.ToString());
 
@@ -35,7 +35,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-               context.Database.ExecuteSqlRaw("DELETE from Process WHERE CardNumber={0} DELETE from Users WHERE CardNumber={0} ", cardNumber);
+                context.Database.ExecuteSqlRaw("DELETE from Process WHERE CardNumber={0} DELETE from Users WHERE CardNumber={0} ", cardNumber);
 
                 context.SaveChanges();
             }
@@ -70,16 +70,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public StatisticsDTO TopSpender(string month)
-        {
-            using (YemekhaneContext context = new YemekhaneContext())
-            {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topSpender {month}").Tables[0];
 
-
-                return (StatisticsDTO)dt.Rows[0][0];
-            }
-        }
 
         public string TopVisitor(string month)
         {
@@ -87,7 +78,7 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topVisitor {month}").Tables[0];
 
-                var tt =  Convert.ToString(dt.Rows[0]["Fullname"]);
+                var tt = Convert.ToString(dt.Rows[0]["Fullname"]);
 
                 return tt;
             }
@@ -111,6 +102,16 @@ namespace DataAccess.Concrete.EntityFramework
                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '{year}%'").Tables[0];
 
                 return Convert.ToInt32(dt.Rows[0]["Registration"]);
+            }
+        }
+
+        List<dynamic> IUserDal.TopSpender(string month)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topSpender {month}").Tables[0];
+                var tt = dt.Rows[0];
+                return tt.ItemArray.ToList();
             }
         }
     }

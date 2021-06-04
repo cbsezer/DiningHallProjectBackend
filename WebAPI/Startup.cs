@@ -32,7 +32,6 @@ namespace WebAPI
         {
             
             services.AddCors();
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -13,7 +13,7 @@ namespace DataAccess.Abstract
     {
         public void UpdateBalance(decimal balance, int cardNumber);
          string TopVisitor(string month);
-        StatisticsDTO TopSpender(string month);
+        List<dynamic> TopSpender(string month);
         int MonthlyRegistration(string month);
          int YearlyRegistration(string year);
 

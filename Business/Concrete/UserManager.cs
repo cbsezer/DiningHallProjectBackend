@@ -86,9 +86,9 @@ namespace Business.Concrete
             return new SuccessDataResult<string>(_userDal.TopVisitor(month), "En çok giden kullanıcı");
         }
 
-        public IDataResult<StatisticsDTO> TopSpender(string month)
+        public IDataResult<List<dynamic>> TopSpender(string month)
         {
-            return new SuccessDataResult<StatisticsDTO>(_userDal.TopSpender(month));
+            return new SuccessDataResult<List<dynamic>> (_userDal.TopSpender(month));
         }
     }
 }

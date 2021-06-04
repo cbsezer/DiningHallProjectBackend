@@ -18,19 +18,23 @@ namespace Business.Concrete
             _userTypeDal = userTypeDal;
         }
 
+        public IDataResult<List<dynamic>> UserTypeExpenses()
+        {
+            return new SuccessDataResult<List<dynamic>>(_userTypeDal.UserTypeExpenses());
+        }
+
         public IDataResult<string> UserTypeInformation(int cardNumber)
         {
             return new SuccessDataResult<string>(_userTypeDal.UserTypeInformation(cardNumber), "Kullanıcı durum bilgisi getirildi");
         }
 
-        public IDataResult<List<string>> UserTypeList(string type)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public IDataResult<int> UserTypeMonthlySpending(string month, int userType)
         {
             return new SuccessDataResult<int>(_userTypeDal.UserTypeMonthlySpending(month, userType));
         }
+
+     
     }
 }
