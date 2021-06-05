@@ -51,10 +51,5 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public Menu MenuDetail(string date)
-        {
-            throw new NotImplementedException();
-        }
-
             }
 }

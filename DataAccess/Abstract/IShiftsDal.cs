@@ -9,5 +9,7 @@ namespace DataAccess.Abstract
 {
     public interface IShiftsDal
     {
+        int MonthlyShifts(int staffId);
+
     }
 }

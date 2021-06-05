@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
+    [Keyless]
     public class Shifts : IEntity
     {
-        [Key] public int StaffId { get; set; }
+        public int StaffId { get; set; }
         public DateTime ShiftDate { get; set; }
     }
 }

@@ -12,10 +12,12 @@ namespace DataAccess.Abstract
     public interface IUserDal : IEntityRepository<User>
     {
         public void UpdateBalance(decimal balance, int cardNumber);
-         string TopVisitor(string month);
-        List<dynamic> TopSpender(string month);
+        List<dynamic> TopVisitor();
+        List<dynamic> MonthlyExpense();
+        List<dynamic> MonthlyVisitors(string date);
+        List<dynamic> TopSpender();
         int MonthlyRegistration(string month);
-         int YearlyRegistration(string year);
+        int YearlyRegistration();
 
     }
 }

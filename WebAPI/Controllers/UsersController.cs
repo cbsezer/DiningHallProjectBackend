@@ -140,9 +140,9 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("GetYearlyRegistration")]
-        public IActionResult GetYearlyRegistration(string year)
+        public IActionResult GetYearlyRegistration()
         {
-            var result = _userService.YearlyRegistration(year);
+            var result = _userService.YearlyRegistration();
 
             if (result.Success)
             {
@@ -157,9 +157,9 @@ namespace WebAPI.Controllers
         
 
         [HttpGet("TopVisitor")]
-        public IActionResult TopVisitor(string month)
+        public IActionResult TopVisitor()
         {
-            var result = _userService.TopVisitor(month);
+            var result = _userService.TopVisitor();
 
             if (result.Success)
             {
@@ -172,9 +172,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("TopSpender")]
-        public IActionResult TopSpender(string month)
+        public IActionResult TopSpender()
         {
-            var result = _userService.TopSpender(month);
+            var result = _userService.TopSpender();
 
             if (result.Success)
             {
@@ -186,6 +186,36 @@ namespace WebAPI.Controllers
 
         }
 
-        
+        [HttpGet("MonthlyExpense")]
+        public IActionResult MonthlyExpense()
+        {
+            var result = _userService.MonthlyExpense();
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+        [HttpGet("MonthlyVisitors")]
+        public IActionResult MonthlyVisitors(string date)
+
+        {
+            var result = _userService.MonthlyVisitors(date);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
+
     }
 }

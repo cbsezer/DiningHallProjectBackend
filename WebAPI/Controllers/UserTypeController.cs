@@ -20,9 +20,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("UserTypeMonthlySpending")]
-        public IActionResult UserTypeMonthlySpending(string month, int userType)
+        public IActionResult UserTypeMonthlySpending(int userType)
         {
-            var result = _userTypeService.UserTypeMonthlySpending(month, userType);
+            var result = _userTypeService.UserTypeMonthlySpending( userType);
 
             if (result.Success)
             {
@@ -63,22 +63,22 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-               
 
-        //[HttpGet("UserTypeList")]
-        //public IActionResult UserTypeList(string type)
-        //{
-        //    var result = _userTypeService.UserTypeList(type);
 
-        //    if (result.Success)
-        //    {
-        //        return Ok(result);
+        [HttpGet("UserTypeList")]
+        public IActionResult UserTypeList(string type)
+        {
+            var result = _userTypeService.UserTypeList(type);
 
-        //    }
+            if (result.Success)
+            {
+                return Ok(result);
 
-        //    return BadRequest(result);
+            }
 
-        //}
+            return BadRequest(result);
+
+        }
 
     }
 }

@@ -90,9 +90,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("GetYearlyGain")]
-        public IActionResult GetYearlyGain(string year)
+        public IActionResult GetYearlyGain()
         {
-            var result = _processService.GetYearlyGain(year);
+            var result = _processService.GetYearlyGain();
 
             if (result.Success)
             {

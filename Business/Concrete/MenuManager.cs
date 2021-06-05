@@ -39,7 +39,7 @@ namespace Business.Concrete
 
         public IDataResult<Menu> GetMenuDetail(string date)
         {
-            return new SuccessDataResult<Menu>(_menuDal.Get($"SELECT MainCourse, Beverage, Dessert FROM Menus INNER JOIN Process ON Menus.MenuID = DAY(Process.ProcessTime) WHERE ProcessTime = {date}"));
+            return new SuccessDataResult<Menu>(_menuDal.Get($"SELECT MenuID, MainCourse, Beverage, Dessert, Calorie FROM Menus INNER JOIN Process ON Menus.MenuID = DAY(Process.ProcessTime) WHERE ProcessTime = '{date}'"));
         }
 
         public IDataResult<Menu> MenuOfTheDay()

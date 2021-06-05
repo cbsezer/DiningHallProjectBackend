@@ -15,7 +15,7 @@ namespace Business.Abstract
         IResult Delete(int id);
         IDataResult<int> GetUserMonthlySpending(int userId, string month);
         IDataResult<int> GetMonthlyGain(string month);
-        IDataResult<int> GetYearlyGain(string year);
+        IDataResult<int> GetYearlyGain();
         
 
     }

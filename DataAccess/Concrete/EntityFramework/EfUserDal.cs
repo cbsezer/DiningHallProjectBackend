@@ -60,11 +60,26 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
+        public List<dynamic> MonthlyExpense()
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                List<dynamic> table = new List<dynamic>();
+
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, "EXEC monthlyExpense 6").Tables[0];
+
+                var tt = dt.Rows[0];
+
+                table.Add(tt);
+                return table;
+            }
+        }
+
         public int MonthlyRegistration(string month)
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '2021-{month}%'").Tables[0];
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '2021-0{month}%'").Tables[0];
 
                 return Convert.ToInt32(dt.Rows[0]["Registration"]);
             }
@@ -72,15 +87,18 @@ namespace DataAccess.Concrete.EntityFramework
 
 
 
-        public string TopVisitor(string month)
+        public List<dynamic> TopVisitor()
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topVisitor {month}").Tables[0];
+                List<dynamic> table = new List<dynamic>();
 
-                var tt = Convert.ToString(dt.Rows[0]["Fullname"]);
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, "EXEC topVisitor 6").Tables[0];
 
-                return tt;
+                var tt = dt.Rows[0];
+
+                table.Add(tt);
+                return table;
             }
         }
 
@@ -95,23 +113,39 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public int YearlyRegistration(string year)
+        public int YearlyRegistration()
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '{year}%'").Tables[0];
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, "SELECT COUNT(*) AS Registration FROM Users WHERE RegistrationDate Like '2021%'").Tables[0];
 
                 return Convert.ToInt32(dt.Rows[0]["Registration"]);
             }
         }
 
-        List<dynamic> IUserDal.TopSpender(string month)
+        public List<dynamic> TopSpender()
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC topSpender {month}").Tables[0];
+                List<dynamic> table = new List<dynamic>();
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, "EXEC topSpender 6").Tables[0];
                 var tt = dt.Rows[0];
-                return tt.ItemArray.ToList();
+
+                table.Add(tt);
+                return table;
+            }
+        }
+
+        public List<dynamic> MonthlyVisitors(string date)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                List<dynamic> table = new List<dynamic>();
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC monthlyVisitors '{date}'").Tables[0];
+                var tt = dt.Rows[0];
+
+                table.Add(tt);
+                return table;
             }
         }
     }

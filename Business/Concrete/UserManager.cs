@@ -32,11 +32,7 @@ namespace Business.Concrete
               return new SuccessDataResult<List<User>>(_userDal.GetAll($"select * from Users where Balance between {min} and {max}"), Messages.UsersListed);
         }
 
-        public IDataResult<List<User>> GetAllByCategoryId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         public IDataResult<User> GetById(int userId)
         {
             return new SuccessDataResult<User>(_userDal.Get($"Select * from Users Where CardNumber={userId}"));
@@ -76,19 +72,29 @@ namespace Business.Concrete
             return new SuccessDataResult<int>(_userDal.MonthlyRegistration(month));
         }
 
-        public IDataResult<int> YearlyRegistration(string year)
+        public IDataResult<int> YearlyRegistration()
         {
-            return new SuccessDataResult<int>(_userDal.YearlyRegistration(year));
+            return new SuccessDataResult<int>(_userDal.YearlyRegistration());
         }
 
-        public IDataResult<string> TopVisitor(string month)
+        public IDataResult<List<dynamic>> TopVisitor()
         {
-            return new SuccessDataResult<string>(_userDal.TopVisitor(month), "En çok giden kullanıcı");
+            return new SuccessDataResult<List<dynamic>>(_userDal.TopVisitor(), "En çok giden kullanıcılar");
         }
 
-        public IDataResult<List<dynamic>> TopSpender(string month)
+        public IDataResult<List<dynamic>> TopSpender()
         {
-            return new SuccessDataResult<List<dynamic>> (_userDal.TopSpender(month));
+            return new SuccessDataResult<List<dynamic>> (_userDal.TopSpender(), "En çok harcayan kullanıcılar");
+        }
+
+        public IDataResult<List<dynamic>> MonthlyExpense()
+        {
+            return new SuccessDataResult<List<dynamic>>(_userDal.MonthlyExpense(), "Kullanıcıların aylık harcamaları");
+        }
+
+        public IDataResult<List<dynamic>> MonthlyVisitors(string date)
+        {
+            return new SuccessDataResult<List<dynamic>>(_userDal.MonthlyVisitors(date), "Belirli bir tarihte yemekhaneye gelen kişiler ve gelis sayilari");
         }
     }
 }

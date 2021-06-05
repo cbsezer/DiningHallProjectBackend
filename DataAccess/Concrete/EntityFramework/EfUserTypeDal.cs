@@ -18,13 +18,10 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 List<dynamic> table = new List<dynamic>();
                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC userTypeExpenses").Tables[0];
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    var tt = dt.Rows[i];
+               
+                    var tt = dt.Rows[0];
                     table.Add(tt);
-                    Console.WriteLine(table);
-                }
-                return table;
+                     return table;
             }
         }
 
@@ -38,21 +35,27 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        //public List<string> userTypeList(string type)
-        //{
-        //    using (YemekhaneContext context = new YemekhaneContext())
-        //    {
-        //        DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT FirstName + ' ' + LastName as Fullname FROM Users INNER JOIN UserType ON UserType.TypeNumber = Users.UserType WHERE UserType.TypeDescription = {type}").Tables[0];
-
-        //        return (dt.Rows[0]["Fullname"]);
-        //    }
-        //}
-
-        public int UserTypeMonthlySpending(string month, int userType)
+        public List<dynamic> userTypeList(string type)
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT SUM(ProcessAmount) as Monthly FROM Process INNER JOIN Users ON Process.CardNumber = Users.CardNumber WHERE ProcessTime Like '2021-0{month}%' AND Users.UserType = {userType}").Tables[0];
+                List<dynamic> table = new List<dynamic>();
+
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT FirstName + ' ' + LastName as Fullname FROM Users INNER JOIN UserType ON UserType.TypeNumber = Users.UserType WHERE UserType.TypeDescription = '{type}'").Tables[0];
+                
+                var tt = dt.Rows[0];
+                table.Add(tt);
+                return table;
+
+
+            }
+        }
+
+        public int UserTypeMonthlySpending(int userType)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COALESCE(SUM(ProcessAmount),0) as Monthly FROM Process INNER JOIN Users ON Process.CardNumber = Users.CardNumber WHERE ProcessTime Like '2021-06%' AND Users.UserType = {userType}").Tables[0];
 
                 return Convert.ToInt32(dt.Rows[0]["Monthly"]);
             }

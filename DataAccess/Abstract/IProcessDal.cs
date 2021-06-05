@@ -14,7 +14,7 @@ namespace DataAccess.Abstract
         int GetUserMonthlySpending(int userId, string month);
 
         int GetMonthlyGain(string month);
-        int GetYearlyGain(string month);
+        int GetYearlyGain();
 
 
     }

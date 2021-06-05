@@ -63,7 +63,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT SUM(ProcessAmount) as spending FROM Process WHERE ProcessTime Like '2021-{month}%' AND CardNumber = {userId}").Tables[0];
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT  COALESCE(SUM(ProcessAmount),0) AS Spending FROM Process WHERE ProcessTime Like '2021-{month}%' AND CardNumber = {userId}").Tables[0];
 
                 return Convert.ToInt32(dt.Rows[0]["spending"]);
             }
@@ -73,17 +73,17 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT coalesce(SUM(ProcessAmount),0) as gain  FROM Process WHERE ProcessTime Like '2021-{month}%'").Tables[0];
+                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COALESCE(SUM(ProcessAmount),0) as Gain  FROM Process WHERE ProcessTime Like '2021-{month}%'").Tables[0];
               
                 return Convert.ToInt32(dt.Rows[0]["gain"]);
             }
         }
 
-        public int GetYearlyGain(string year)
+        public int GetYearlyGain()
         {
             using (YemekhaneContext context = new YemekhaneContext())
             {
-                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT coalesce(SUM(ProcessAmount),0) as gain  FROM Process WHERE ProcessTime Like '{year}%'").Tables[0];
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT COALESCE(SUM(ProcessAmount),0) as Gain  FROM Process WHERE ProcessTime Like '2021%'").Tables[0];
 
                 return Convert.ToInt32(dt.Rows[0]["gain"]);
             }

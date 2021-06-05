@@ -76,5 +76,21 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+        [HttpGet("ProcessDayStaff")]
+        public IActionResult ProcessDayStaff(string date)
+        {
+            var result = _staffService.ProcessDayStaff(date);
+
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
+       
     }
 }

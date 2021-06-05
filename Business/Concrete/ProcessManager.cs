@@ -50,9 +50,9 @@ namespace Business.Concrete
 
         }
 
-        public IDataResult<int> GetYearlyGain(string year)
+        public IDataResult<int> GetYearlyGain()
         {
-            return new SuccessDataResult<int>(_processDal.GetYearlyGain(year));
+            return new SuccessDataResult<int>(_processDal.GetYearlyGain());
         }
     }
 }

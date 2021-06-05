@@ -28,11 +28,14 @@ namespace Business.Concrete
             return new SuccessDataResult<string>(_userTypeDal.UserTypeInformation(cardNumber), "Kullanıcı durum bilgisi getirildi");
         }
 
-     
-
-        public IDataResult<int> UserTypeMonthlySpending(string month, int userType)
+        public IDataResult<List<dynamic>> UserTypeList(string type)
         {
-            return new SuccessDataResult<int>(_userTypeDal.UserTypeMonthlySpending(month, userType));
+            return new SuccessDataResult<List<dynamic>>(_userTypeDal.userTypeList(type));
+        }
+
+        public IDataResult<int> UserTypeMonthlySpending(int userType)
+        {
+            return new SuccessDataResult<int>(_userTypeDal.UserTypeMonthlySpending(userType));
         }
 
      

@@ -1,8 +1,10 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.ApplicationBlocks.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +50,16 @@ namespace DataAccess.Concrete.EntityFramework
             using (YemekhaneContext context = new YemekhaneContext())
             {
                 return sqlCommand == null ? context.Staff.FromSqlRaw("SELECT * FROM dbo.Staff").ToList() : context.Staff.FromSqlRaw(sqlCommand).ToList();
+            }
+        }
+
+        public string ProcessDayStaff(string date)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC ProcessDayStaff '{date}'").Tables[0];
+
+                return Convert.ToString(dt.Rows[0]["Fullname"]);
             }
         }
 

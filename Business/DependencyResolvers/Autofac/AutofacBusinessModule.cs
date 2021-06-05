@@ -30,6 +30,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserTypeManager>().As<IUserTypeService>().SingleInstance();
             builder.RegisterType<EfUserTypeDal>().As<IUserTypeDal>().SingleInstance();
+
+            builder.RegisterType<ShiftsManager>().As<IShiftsService>().SingleInstance();
+            builder.RegisterType<EfShiftsDal>().As<IShiftsDal>().SingleInstance();
         }
     }
 }

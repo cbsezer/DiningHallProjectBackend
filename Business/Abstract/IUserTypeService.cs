@@ -9,11 +9,10 @@ namespace Business.Abstract
 {
     public interface IUserTypeService
     {
-        IDataResult<int> UserTypeMonthlySpending(string month, int userType);
+        IDataResult<int> UserTypeMonthlySpending(int userType);
         IDataResult<string> UserTypeInformation(int cardNumber);
 
         IDataResult<List<dynamic>> UserTypeExpenses();
-
-
+        IDataResult<List<dynamic>> UserTypeList(string type);
     }
 }

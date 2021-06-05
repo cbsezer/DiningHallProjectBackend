@@ -9,5 +9,7 @@ namespace DataAccess.Abstract
 {
     public interface IStaffDal : IEntityRepository<Staff>
     {
+        string ProcessDayStaff(string date);
+
     }
 }

@@ -163,3 +163,6 @@ C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\obj\Debug\net5.0
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\bundleconfig.json
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\betul\Documents\GitHub\DiningHallProjectBackend\WebAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

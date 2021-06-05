@@ -14,6 +14,8 @@ namespace Business.Abstract
         IResult Add(Staff staff);
         IResult Delete(int id);
         IDataResult<Staff> StaffOfTheDay();
+        IDataResult<string> ProcessDayStaff(string date);
+
 
     }
 }

@@ -13,13 +13,14 @@ namespace Business.Abstract
     public interface IUserService
     {
         IDataResult<List<User>> GetAll();
-        IDataResult<List<User>> GetAllByCategoryId(int id);
         IDataResult<List<User>> GetAllByBalance(decimal min, decimal max);
         IDataResult<User> GetById(int userId);
         IDataResult<int> MonthlyRegistration(string month);
-        IDataResult<int> YearlyRegistration(string year);
-        IDataResult<string> TopVisitor(string month);
-        IDataResult<List<dynamic>> TopSpender(string month);
+        IDataResult<int> YearlyRegistration();
+        IDataResult<List<dynamic>> TopVisitor();
+        IDataResult<List<dynamic>> TopSpender();
+        IDataResult<List<dynamic>> MonthlyExpense();
+        IDataResult<List<dynamic>> MonthlyVisitors(string date);
         IResult Add(User user);
         IDataResult<User> Login(int cardNo, string password);
         IResult Delete(int id);
