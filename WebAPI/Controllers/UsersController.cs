@@ -215,7 +215,22 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+        [HttpGet("WeeklyCalories")]
+        public IActionResult WeeklyCalories(string date ,int cardNumber)
 
+        {
+            var result = _userService.WeeklyCalories(date, cardNumber);
 
+            if (result.Success)
+            {
+                return Ok(result);
+
+            }
+
+            return BadRequest(result);
+
+        }
+
+        
     }
 }

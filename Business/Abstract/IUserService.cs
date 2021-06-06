@@ -18,6 +18,7 @@ namespace Business.Abstract
         IDataResult<int> MonthlyRegistration(string month);
         IDataResult<int> YearlyRegistration();
         IDataResult<List<dynamic>> TopVisitor();
+        IDataResult<List<dynamic>> WeeklyCalories(string date, int cardNumber);
         IDataResult<List<dynamic>> TopSpender();
         IDataResult<List<dynamic>> MonthlyExpense();
         IDataResult<List<dynamic>> MonthlyVisitors(string date);

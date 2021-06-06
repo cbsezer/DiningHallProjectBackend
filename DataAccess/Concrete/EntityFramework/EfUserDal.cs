@@ -148,5 +148,27 @@ namespace DataAccess.Concrete.EntityFramework
                 return table;
             }
         }
+
+        public List<dynamic> WeeklyCalories(string date, int cardNumber)
+        {
+            using (YemekhaneContext context = new YemekhaneContext())
+            {
+                
+                List<dynamic> table = new List<dynamic>();
+                DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC WeeklyCalories '{date}' , {cardNumber}").Tables[0];
+                if (dt.Rows.Count >0)
+                {
+                    var tt = dt.Rows[0];
+
+                    table.Add(tt);
+                    return table;
+                }
+                else
+                {
+                    return table;
+                }
+              
+            }
+        }
     }
 }

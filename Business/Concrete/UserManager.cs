@@ -96,5 +96,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<dynamic>>(_userDal.MonthlyVisitors(date), "Belirli bir tarihte yemekhaneye gelen kişiler ve gelis sayilari");
         }
+
+        public IDataResult<List<dynamic>> WeeklyCalories(string date, int cardNumber)
+        {
+            return new SuccessDataResult<List<dynamic>>(_userDal.WeeklyCalories(date, cardNumber), "Bir kişinin aldığı haftalık kalori miktarı");
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace DataAccess.Abstract
         List<dynamic> TopVisitor();
         List<dynamic> MonthlyExpense();
         List<dynamic> MonthlyVisitors(string date);
+        List<dynamic> WeeklyCalories(string date, int cardNumber);
         List<dynamic> TopSpender();
         int MonthlyRegistration(string month);
         int YearlyRegistration();

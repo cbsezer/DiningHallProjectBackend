@@ -18,10 +18,17 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 List<dynamic> table = new List<dynamic>();
                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"EXEC userTypeExpenses").Tables[0];
-               
+                if (dt.Rows.Count > 0)
+                {
                     var tt = dt.Rows[0];
+
                     table.Add(tt);
-                     return table;
+                    return table;
+                }
+                else
+                {
+                    return table;
+                }
             }
         }
 
@@ -42,10 +49,18 @@ namespace DataAccess.Concrete.EntityFramework
                 List<dynamic> table = new List<dynamic>();
 
                 DataTable dt = SqlHelper.ExecuteDataset(context.Database.GetConnectionString(), System.Data.CommandType.Text, $"SELECT FirstName + ' ' + LastName as Fullname FROM Users INNER JOIN UserType ON UserType.TypeNumber = Users.UserType WHERE UserType.TypeDescription = '{type}'").Tables[0];
-                
-                var tt = dt.Rows[0];
-                table.Add(tt);
-                return table;
+
+                if (dt.Rows.Count > 0)
+                {
+                    var tt = dt.Rows[0];
+
+                    table.Add(tt);
+                    return table;
+                }
+                else
+                {
+                    return table;
+                }
 
 
             }
